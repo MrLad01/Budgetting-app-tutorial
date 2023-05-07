@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 // Routes
-import Dashboard, { dashboardLoader } from "./pages/dashboard"
+import Dashboard, { dashboardAction, dashboardLoader } from "./pages/dashboard"
 import Main, { mainLoader } from "./layout/Main"
 import Error from "./pages/Error"
 import { logoutAction } from "./actions/logout"
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
+        action: dashboardAction,
         errorElement: <Error />
       },
       {
