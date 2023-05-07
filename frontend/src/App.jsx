@@ -6,6 +6,8 @@ import Main, { mainLoader } from "./layout/Main"
 import Error from "../pages/Error"
 import { logoutAction } from "./actions/logout"
 
+import { ToastContainer } from "react-toastify"
+
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,7 @@ const router = createBrowserRouter([
 function App() {
   return <div className="App">
       <RouterProvider router={router} />
+      <ToastContainer />
     </div>;
 }
 
