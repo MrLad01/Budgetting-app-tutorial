@@ -7,6 +7,7 @@ import Error from "../pages/Error"
 import { logoutAction } from "./actions/logout"
 
 import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 
 const router = createBrowserRouter([
