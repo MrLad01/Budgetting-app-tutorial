@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 // Routes
-import Dashboard, { dashboardLoader } from "../pages/dashboard"
+import Dashboard, { dashboardLoader } from "./pages/dashboard"
 import Main, { mainLoader } from "./layout/Main"
-import Error from "../pages/Error"
+import Error from "./pages/Error"
 import { logoutAction } from "./actions/logout"
 
 import { ToastContainer } from "react-toastify"
