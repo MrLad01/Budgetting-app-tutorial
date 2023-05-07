@@ -20,6 +20,7 @@ const Intro = () => {
             placeholder="What is your name?" 
             aria-label="Your Name"
             autoComplete="given-name"/>
+            <input type="hidden" name="newUser" value="_action" />
             <button type="submit" className="btn btn--dark">
                 <span>Create Account</span>
                 <UserPlusIcon width={20} />
