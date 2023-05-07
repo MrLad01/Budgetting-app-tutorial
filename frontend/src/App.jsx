@@ -2,32 +2,32 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 // Routes
 import Dashboard, { dashboardLoader } from "../pages/dashboard"
-import Main from "./layout/Main"
+import Main, { mainLoader } from "./layout/Main"
 import Error from "../pages/Error"
 
-function App() {
 
-  const router = createBrowserRouter([
-    {
-      path:"/",
-      element: <Main />,
-      loader: mainLoader,
-      errorElement: <Error />,
-      children: {
+const router = createBrowserRouter([
+  {
+    path:"/",
+    element: <Main />,
+    loader: mainLoader,
+    errorElement: <Error />,
+    children: [
+      {
         index: true,
         element: <Dashboard />,
         loader: dashboardLoader,
         errorElement: <Error />
       }
-    }
-  ]
-  )
+    ]
+  },
+]);
 
-  return (
-    <div className="app">
+
+function App() {
+  return <div className="App">
       <RouterProvider router={router} />
-    </div>
-  )
+    </div>;
 }
 
 export default App
