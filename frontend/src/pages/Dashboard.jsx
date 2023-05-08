@@ -10,11 +10,13 @@ import Intro from "../components/Intro";
 import AddBugetForm from "../components/AddBugetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetsItem from "../components/BudgetsItem";
+import Table from "../components/Table";
 
 export function dashboardLoader(){
     const userName = fetchData("userName");
     const budgets = fetchData("budgets");
-    return { userName, budgets }
+    const expenses = fetchData("expenses");
+    return { userName, budgets, expenses }
 }
 
 // action
@@ -53,7 +55,7 @@ export async function dashboardAction({request}){
 }
 
 const Dashboard = () => { 
-   const { userName, budgets } = useLoaderData()
+   const { userName, budgets, expenses } = useLoaderData()
   return (
     <>
       { userName  ? (
@@ -76,6 +78,14 @@ const Dashboard = () => {
                         ))
                       }
                     </div>
+                    {
+                      expenses && expenses.length > 0 && (
+                        <div className="grid-md">
+                          <h2>Recent Expenses</h2>
+                          <Table />
+                        </div>
+                      )
+                    }
                    </div>
                  ) : 
                 (  
