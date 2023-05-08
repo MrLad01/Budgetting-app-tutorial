@@ -20,15 +20,22 @@ export async function dashboardAction({request}){
   const data = await request.formData();
   // const userName = data.get("userName")
   // console.log(userName);
-  const {_action, ...value} = Object.fromEntries(data)
+  const {_action, ...values} = Object.fromEntries(data)
   if (_action === "newUser"){
       try{
-        localStorage.setItem("userName", JSON.stringify(formData.userName))
-        return toast.success(`Welcome, ${formData.userName}`)
+        localStorage.setItem("userName", JSON.stringify(values.userName))
+        return toast.success(`Welcome, ${values.userName}`)
       }
       catch(e){
         throw new Error("There was a problem creating your account.")
       }
+  }
+  if(_action === "createBudget"){
+    try{
+      return toast.success("Budget created!")
+    } catch(e){
+      throw new Error("There was a problem creating your budget.")
+    }
   }
 }
 
