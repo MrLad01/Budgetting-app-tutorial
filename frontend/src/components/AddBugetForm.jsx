@@ -44,7 +44,7 @@ const AddBugetForm = () => {
                 step="0.01"
                 name="newBudgetAmount"
                 id="newBudgetAmount"
-                placeholder="e.g., $350"
+                placeholder="e.g., NGN 350"
                 required
                 inputMode="decimal"
                  />

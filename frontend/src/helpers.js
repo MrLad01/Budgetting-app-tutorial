@@ -43,3 +43,26 @@ export const createExpense = ({name, amount, budgetId}) => {
 export const deleteItem = ({key}) => {
     return localStorage.removeItem(key)
 }
+
+// total spent by budget 
+export const calculateSpentByBudget = (budgetId) => {
+    const expenses = fetchData("expenses") ?? [];
+    const budgetSpent = expenses.reduce((acc, expense) => {
+        if (expense.budgetId !== budgetId) return acc
+
+        return acc += expense.amount
+    }, 0)
+    return budgetSpent;
+}
+
+// FORMATTING   
+
+// Format currency
+export const formatCurrency = (amt) => {
+    return amt.toLocaleString(undefined,
+        {
+            style: "currency",
+            currency: "NGN"
+        }
+    )
+}

@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Intro from "../components/Intro";
 import AddBugetForm from "../components/AddBugetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
+import BudgetsItem from "../components/BudgetsItem";
 
 export function dashboardLoader(){
     const userName = fetchData("userName");
@@ -67,6 +68,14 @@ const Dashboard = () => {
                        <AddBugetForm />
                        <AddExpenseForm  budgets={budgets} />
                      </div>
+                    <h2>Existing Budgets</h2>
+                    <div className="budgets">
+                      {
+                        budgets.map((budget) => (
+                          <BudgetsItem key={budget.id} budget={budget} />
+                        ))
+                      }
+                    </div>
                    </div>
                  ) : 
                 (  
