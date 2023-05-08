@@ -40,7 +40,7 @@ const AddBugetForm = () => {
             <div className="grid-xs">
                 <label htmlFor="newBudgetAmount">Amount</label>
                 <input 
-                type="text"
+                type="number"
                 step="0.01"
                 name="newBudgetAmount"
                 id="newBudgetAmount"
