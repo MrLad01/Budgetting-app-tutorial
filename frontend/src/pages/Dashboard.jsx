@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 // copmonents
 import Intro from "../components/Intro";
-import AddBugetForm from "../components/AddBugetForm";
+import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetsItem from "../components/BudgetsItem";
 import Table from "../components/Table";
@@ -80,7 +80,7 @@ const Dashboard = () => {
                 (  
                   <div className="grid-lg">
                      <div className="flex-lg">
-                       <AddBugetForm />
+                       <AddBudgetForm />
                        <AddExpenseForm  budgets={budgets} />
                      </div>
                     <h2>Existing Budgets</h2>
