@@ -1,8 +1,23 @@
 
-const Table = () => {
+const Table = ({expenses}) => {
   return (
-    <div>
-      
+    <div className="table">
+      <table>
+        <thead>
+            <tr>
+
+            </tr>
+        </thead>
+        <tbody>
+            {
+                expenses.map((expense) => (
+                    <tr key={expense.id}>
+                    
+                    </tr>
+                ))
+            }
+        </tbody>
+      </table>
     </div>
   )
 }
