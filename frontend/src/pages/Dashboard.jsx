@@ -1,5 +1,5 @@
 // rrd imports
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 // helpers function
 import { createBudget, createExpense, fetchData, waait } from "../helpers"
@@ -12,6 +12,8 @@ import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetsItem from "../components/BudgetsItem";
 import Table from "../components/Table";
 
+
+// Loader
 export function dashboardLoader(){
     const userName = fetchData("userName");
     const budgets = fetchData("budgets");
@@ -82,7 +84,17 @@ const Dashboard = () => {
                       expenses && expenses.length > 0 && (
                         <div className="grid-md">
                           <h2>Recent Expenses</h2>
-                          <Table expenses={expenses.sort((a, b) => b.createdAt - a.createdAt)} />
+                          <Table expenses={expenses
+                          .sort((a, b) => b.createdAt - a.createdAt)
+                          .slice(0, 8)
+                        }
+                           />
+                           {expenses.length > 8 && (
+                            <Link
+                            to="expenses"
+                            className="btn btn--dark"
+                            >View all expenses</Link>
+                           )}
                         </div>
                       )
                     }
