@@ -115,13 +115,14 @@ const Dashboard = () => {
                   <div className="grid-sm">
                      <p>Personal budgetting is the secret to financial freedom.</p>
                      <p>Create a budget to get started!</p>
-                      <AddBugetForm />
+                      <AddBudgetForm />
                    </div>
                  )  
               }
             </div>
           </div>
       ) : <Intro /> }
+      <small className="accent" style={{display: "flex", alignItems: "center" , marginTop: 120, fontSize: 12}} >This site is a copy from "Build a Budgeting App with React-Router-Dom" on theNetNinja *</small>
     
     </>
   )
