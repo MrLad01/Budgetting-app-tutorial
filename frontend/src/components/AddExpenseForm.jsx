@@ -1,4 +1,4 @@
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { NoSymbolIcon, PlusCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useRef } from "react";
 import { Form, useFetcher } from "react-router-dom"
 
