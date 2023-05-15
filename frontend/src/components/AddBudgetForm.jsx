@@ -59,8 +59,7 @@ const AddBugetForm = () => {
                             <CurrencyDollarIcon width={20} />
                         </>
                     )
-                }
-                
+                }              
             </button>
         </fetcher.Form>
       

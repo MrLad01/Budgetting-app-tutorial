@@ -26,7 +26,10 @@ export async function dashboardAction({request}){
   const data = await request.formData();
   // const userName = data.get("userName")
   // console.log(userName);
+
   const {_action, ...values} = Object.fromEntries(data)
+
+
   if (_action === "newUser"){
       try{      
         localStorage.setItem("userName", JSON.stringify(values.userName))
@@ -81,7 +84,7 @@ const Dashboard = () => {
                   <div className="grid-lg">
                      <div className="flex-lg">
                        <AddBudgetForm />
-                       <AddExpenseForm  budgets={budgets} />
+                       <AddExpenseForm  budgets={budgets}/>
                      </div>
                     <h2>Existing Budgets</h2>
                     <div className="budgets">

@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { deleteItem, getAllMatchingItems } from "../helpers";
 import { redirect } from "react-router-dom";
 
- export function deleteBudget({params}){
+ export function deleteBudget({ params }){
     try {
         deleteItem({
           key: "budgets",
@@ -15,14 +15,14 @@ import { redirect } from "react-router-dom";
             value: params.id
         })
 
-        associatedExpenses.forEach((expenses) => {
+        associatedExpenses.forEach((expense) => {
             deleteItem({
                 key: "expenses",
-                id: params.id
+                id: expense.id
             })
         })
 
-        toast.success("Budget delted successfully")
+        toast.success("Budget deleted successfully")
     } catch(e) {
         throw new Error("There was a problem deleting your budget.")
     }

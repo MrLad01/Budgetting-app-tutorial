@@ -1,12 +1,14 @@
 import { Form, Link } from "react-router-dom";
 import { calculateSpentByBudget, formatCurrency, formatPercentage } from "../helpers"
 import { BanknotesIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 const BudgetsItem = ({budget, showDelete = false}) => {
 
     const {id, name, amount, color} = budget
     const spent = calculateSpentByBudget(id);
-  
+
   return (
     <div 
         className="budget"
@@ -19,11 +21,15 @@ const BudgetsItem = ({budget, showDelete = false}) => {
         <p>{formatCurrency(amount)} Budgeted</p>
       </div>
       <progress max={amount} value={spent} >
-        {/* percentage */}
-        {formatPercentage( spent / amount )}
+        {/* percentage
+        {formatPercentage( spent / amount )} */}
       </progress> 
+        { spent >= (0.8 * amount) &&
+         <p style={{textAlign: "right",  fontSize:"14px", marginTop: "-5px" }}> Warning: You are about exhausting your budget!!! </p> }      
+  
       <div className="progress-text">
-        <small>{formatCurrency(spent)} spent</small>
+       
+        <small>{formatCurrency(spent)}  spent</small>
         <small>{formatCurrency(amount - spent)} remaining</small>
       </div>
       {

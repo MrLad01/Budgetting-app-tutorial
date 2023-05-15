@@ -1,6 +1,7 @@
 import { NoSymbolIcon, PlusCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useRef } from "react";
 import { Form, useFetcher } from "react-router-dom"
+import { calculateSpentByBudget } from "../helpers";
 
 const AddExpenseForm = ({ budgets }) => {
 
@@ -57,15 +58,22 @@ const AddExpenseForm = ({ budgets }) => {
             <div className="grid-xs" hidden={budgets.length === 1}>
                 <label htmlFor="newExpenseBudget">Budget Category</label>
                 <select name="newExpenseBudget" id="newExpenseBudget" required>
-                    {
+                    {  
                         budgets
                             .sort((a, b) => a.createdAt - b.createdAt)
                             .map((budget) => {
+                                const {id, amount} = budget 
+                                const spent = calculateSpentByBudget(id);
                                 return (
-                                    <option key={budget.id} value={budget.id}>
-                                        {budget.name}
-                                    </option>
+                                    <>
+                                        { spent !== amount && 
+                                            <option key={budget.id} value={budget.id}>
+                                                {budget.name}
+                                            </option>
+                                        }
+                                    </>
                                 )
+                                
                             })
                     }
                 </select>
@@ -73,10 +81,10 @@ const AddExpenseForm = ({ budgets }) => {
             <input type="hidden" name="_action" value="createExpense"  />
             <button type="submit" className="btn btn--dark" disabled={isSubmitting}>
                 {
-                    isSubmitting ? <span>Submitting...</span> :
+                    isSubmitting ? <span>Submitting... </span> :
                     (
                         <>
-                            <span>Add Expense</span>
+                            <span>Add Expense </span>
                             <PlusCircleIcon width={20} />
                         </>
                     )
