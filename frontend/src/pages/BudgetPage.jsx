@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { createExpense, deleteItem, getAllMatchingItems } from "../helpers"
+import { calculateSpentByBudget, createExpense, deleteItem, getAllMatchingItems } from "../helpers"
 import BudgetsItem from "../components/BudgetsItem";
 import AddExpenseForm from "../components/AddExpenseForm";
 import Table from "../components/Table";
@@ -8,18 +8,19 @@ import { toast } from "react-toastify";
 // loader
 export async function budgetLoader({params}){
 
+    
     const budget = await getAllMatchingItems({
         category: "budgets",
         key: "id",
         value: params.id
     })[0];
-
+    
     const expenses = await getAllMatchingItems({
         category: "expenses",
         key: "budgetId",
         value: params.id
     });
-
+    
 
     if(!budget){
         throw new Error("The budget you are trying to find does not exist")
@@ -64,6 +65,9 @@ export async function budgetAction({request}){
 const BudgetPage = () => {
 
     const { budget, expenses } = useLoaderData();
+    const {id, amount} = budget;
+    const spent = calculateSpentByBudget(id);
+
 
   return (
     <div className="grid-lg"
@@ -76,7 +80,7 @@ const BudgetPage = () => {
         </h1>
         <div className="flex-lg">
             <BudgetsItem budget={budget} showDelete={true} />
-            <AddExpenseForm budgets={[budget]} />
+            {spent < amount ? (<AddExpenseForm budgets={[budget]} />) : (<></>)}
         </div>
         {
             expenses && expenses.length > 0 && (

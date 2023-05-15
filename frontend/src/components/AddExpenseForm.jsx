@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { Form, useFetcher } from "react-router-dom"
 import { calculateSpentByBudget } from "../helpers";
 
-const AddExpenseForm = ({ budgets }) => {
+const AddExpenseForm = ({ budgets, showForm = true}) => {
 
     const fetcher = useFetcher();
     const isSubmitting = fetcher.state === "submitting"
@@ -94,7 +94,6 @@ const AddExpenseForm = ({ budgets }) => {
             </button>
         </fetcher.Form>
     </div>
-
   )
 }
 
