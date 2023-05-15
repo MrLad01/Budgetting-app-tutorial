@@ -24,8 +24,10 @@ const BudgetsItem = ({budget, showDelete = false}) => {
         {/* percentage
         {formatPercentage( spent / amount )} */}
       </progress> 
-        { spent >= (0.8 * amount) &&
+        { spent < amount &&  spent >= (0.8 * amount) &&
          <p style={{textAlign: "right",  fontSize:"14px", marginTop: "-5px" }}> Warning: You are about exhausting your budget!!! </p> }      
+        { spent === amount &&
+         <p style={{textAlign: "center",  fontSize:"14px", marginTop: "-5px", marginLeft: "50px" }}> Sorry, You have exhausted this budget </p> }      
   
       <div className="progress-text">
        
