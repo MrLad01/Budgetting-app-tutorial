@@ -56,27 +56,29 @@ const AddExpenseForm = ({ budgets }) => {
                 </div>
             </div>
             <div className="grid-xs" hidden={budgets.length === 1}>
-                <label htmlFor="newExpenseBudget">Budget Category</label>
-                <select name="newExpenseBudget" id="newExpenseBudget" required>
                     {  
                         budgets
-                            .sort((a, b) => a.createdAt - b.createdAt)
-                            .map((budget) => {
-                                const {id, amount} = budget 
-                                const spent = calculateSpentByBudget(id);
-                                return (
-                                    <>
-                                        { spent !== amount && 
-                                            <option key={budget.id} value={budget.id}>
-                                                {budget.name}
-                                            </option>
+                        .sort((a, b) => a.createdAt - b.createdAt)
+                        .map((budget) => {
+                            const {id, amount} = budget 
+                            const spent = calculateSpentByBudget(id);
+                            return (
+                                <>
+                                        { spent !== amount && spent < amount &&
+                                            <>
+                                                <label htmlFor="newExpenseBudget">Budget Category</label>
+                                                <select name="newExpenseBudget" id="newExpenseBudget" required>
+                                                    <option key={budget.id} value={budget.id}>
+                                                        {budget.name}
+                                                    </option>
+                                                </select>
+                                            </>
                                         }
                                     </>
                                 )
                                 
                             })
                     }
-                </select>
             </div>
             <input type="hidden" name="_action" value="createExpense"  />
             <button type="submit" className="btn btn--dark" disabled={isSubmitting}>
