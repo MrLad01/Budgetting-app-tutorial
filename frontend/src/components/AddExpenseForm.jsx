@@ -54,7 +54,7 @@ const AddExpenseForm = ({ budgets }) => {
                     required
                      />
                 </div>
-            </div>
+            </div> 
             <div className="grid-xs" hidden={budgets.length === 1}>
                     <label htmlFor="newExpenseBudget">Budget Category</label> 
                     <select name="newExpenseBudget" id="newExpenseBudget" required>
