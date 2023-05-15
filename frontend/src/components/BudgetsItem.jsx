@@ -28,11 +28,14 @@ const BudgetsItem = ({budget, showDelete = false}) => {
          <p style={{textAlign: "right",  fontSize:"14px", marginTop: "-5px", marginLeft: "-20px" }}> Warning: You are about exhausting your budget!!! </p> }      
         { spent === amount &&
          <p style={{textAlign: "center",  fontSize:"14px", marginTop: "-5px", marginLeft: "50px" }}> Sorry, You have exhausted this budget </p> }      
+        { spent > amount &&
+         <p style={{textAlign: "center",  fontSize:"14px", marginTop: "-5px", marginLeft: "50px" }}> You have exhausted this budget by {formatCurrency(spent - amount)} </p> }      
   
       <div className="progress-text">
        
         <small>{formatCurrency(spent)}  spent</small>
-        <small>{formatCurrency(amount - spent)} remaining</small>
+        { spent < amount && <small>{formatCurrency(amount - spent)} remaining</small>}
+        { spent >= amount && <small>No amount remaining</small>}
       </div>
       {
         showDelete ? (
