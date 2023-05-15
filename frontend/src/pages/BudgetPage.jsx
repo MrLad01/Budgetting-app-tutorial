@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { calculateSpentByBudget, createExpense, deleteItem, getAllMatchingItems } from "../helpers"
+import { calculateSpentByBudget, createExpense, deleteItem, getAllMatchingItems, waaait, waait } from "../helpers"
 import BudgetsItem from "../components/BudgetsItem";
 import AddExpenseForm from "../components/AddExpenseForm";
 import Table from "../components/Table";
@@ -37,6 +37,7 @@ export async function budgetAction({request}){
     
     if(_action === "createExpense"){
         try{
+            await waaait();
             createExpense({
                 name:values.newExpense,
                 amount:values.newExpenseAmount, 

@@ -2,7 +2,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 // helpers function
-import { createBudget, createExpense, deleteItem, fetchData, waait } from "../helpers"
+import { createBudget, createExpense, deleteItem, fetchData, waaait, waait } from "../helpers"
 import { toast } from "react-toastify";
 
 // copmonents
@@ -50,7 +50,7 @@ export async function dashboardAction({request}){
   }
   if(_action === "createExpense"){
     try{
-      await waait();
+      await waaait();
       createExpense({name:values.newExpense, amount:values.newExpenseAmount, budgetId: values.newExpenseBudget})
       return toast.success(`Expense ${values.newExpense} created`)
     } catch(e){
